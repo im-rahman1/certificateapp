@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "674485320218",
+    "project_id": "certificateapp-3e44f",
+    "storage_bucket": "certificateapp-3e44f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674485320218:android:8ea25e0fbbefb7b93f6fa3",
+        "android_client_info": {
+          "package_name": "com.certificateapplication.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWWPwBnyNqFHOlzHdsBvZh7ObaRPfTRQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
