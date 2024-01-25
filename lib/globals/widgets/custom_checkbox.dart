@@ -3,12 +3,10 @@ import 'package:certificateapp/utils/app_colors.dart';
 
 class CustomCheckbox extends StatefulWidget {
   final bool initialValue;
-  final String label;
   final ValueChanged<bool?> onChanged;
 
   const CustomCheckbox({
     Key? key,
-    required this.label,
     required this.initialValue,
     required this.onChanged,
   }) : super(key: key);

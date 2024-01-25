@@ -183,38 +183,50 @@ class _SignupState extends State<Signup> {
                         //   ],
                         // ),
                         const SizedBox(
-                          height: 5,
+                          height: 8,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            controller.changeTerms();
-                          },
-                          child: Row(
+                        GetBuilder<SignUpController>(builder: (value) {
+                          return Column(
                             children: [
-                              GetBuilder<SignUpController>(builder: (value) {
-                                return Container(
-                                  margin: const EdgeInsets.only(left: 3),
-                                  height: 20,
-                                  width: 20,
-                                  child: CustomCheckbox(
-                                      initialValue: value.terms,
-                                      label: 'Accept terms & conditions',
-                                      onChanged: (check) =>
-                                          controller.changeTerms()),
-                                );
-                              }),
-                              Expanded(
-                                child: Text(
-                                  '  Accept terms & conditions',
-                                  style: normalText(
-                                      size: 13, color: AppColors.borderColor),
+                              GestureDetector(
+                                onTap: () {
+                                  controller.changeTerms();
+                                },
+                                child: Row(
+                                  children: [
+                                    GetBuilder<SignUpController>(
+                                        builder: (value) {
+                                      return Container(
+                                        margin: const EdgeInsets.only(left: 3),
+                                        height: 20,
+                                        width: 20,
+                                        child: Checkbox(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        3)), // Border co
+                                            activeColor: AppColors.primaryColor,
+                                            value: value.terms,
+                                            onChanged: (check) =>
+                                                controller.changeTerms()),
+                                      );
+                                    }),
+                                    Expanded(
+                                      child: Text(
+                                        '  Accept terms & conditions',
+                                        style: normalText(
+                                            size: 13,
+                                            color: AppColors.borderColor),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
+                              )
                             ],
-                          ),
-                        ),
+                          );
+                        }),
                         const SizedBox(
-                          height: 5,
+                          height: 8,
                         ),
                         GetBuilder<LoginController>(
                             id: 'signupButton',

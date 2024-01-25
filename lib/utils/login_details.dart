@@ -41,7 +41,8 @@ class UserDetail extends GetxController {
     lastName = sharedPreferences.getString(SharedPrefKey.KEY_LAST_NAME) ?? '';
     email = sharedPreferences.getString(SharedPrefKey.KEY_KEY_EMAIL) ?? '';
     image = sharedPreferences.getString(SharedPrefKey.KEY_USER_IMAGE) ?? '';
-    image = sharedPreferences.getString(SharedPrefKey.KEY_EMAIL_VERIFIED) ?? '';
+    emailVerified =
+        sharedPreferences.getBool(SharedPrefKey.KEY_EMAIL_VERIFIED) ?? false;
     islogin = sharedPreferences.getBool(SharedPrefKey.KEY_IS_LOGIN) ?? false;
     update();
   }
