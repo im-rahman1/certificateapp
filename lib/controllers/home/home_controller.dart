@@ -38,6 +38,15 @@ class HomeController extends GetxController {
   FocusNode phoneEmailFocusNode = FocusNode();
   FocusNode nameOfSupervisorFocusNode = FocusNode();
 
+  Map<String, bool> typeOfWork = {
+    'addition': false,
+    'alterations': false,
+    'newWork': false
+  };
+
+  String prescribedWork = "";
+  String referenceStandards = "";
+
   Future<bool> initvalidation() async {
     if (!Global.checkNull(emailController.text.toString().trim())) {
       Global.showToastAlert(
@@ -88,10 +97,5 @@ class HomeController extends GetxController {
           strMsg: 'Validation error',
           toastType: TOAST_TYPE.toastError);
     }
-  }
-
-  updateHidePassword() {
-    hidePassword = !hidePassword;
-    update(['pass']);
   }
 }
