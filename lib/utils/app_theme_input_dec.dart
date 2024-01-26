@@ -11,6 +11,7 @@ class AppTheme {
         popupMenuTheme: _popUpMenuThemeData(),
         scaffoldBackgroundColor: AppColors.scaffoldBacground,
         backgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(backgroundColor: AppColors.scaffoldBacground),
         splashColor: Colors.grey.shade400,
         highlightColor: Colors.blueGrey[200]?.withOpacity(.25),
 
