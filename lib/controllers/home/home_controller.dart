@@ -1,19 +1,12 @@
-import 'dart:developer';
-
-import 'package:certificateapp/globals/database.dart';
 import 'package:certificateapp/globals/enum.dart';
 import 'package:certificateapp/globals/global.dart';
-import 'package:certificateapp/models/user.dart';
-import 'package:certificateapp/screens/home/home_screen.dart';
-import 'package:certificateapp/utils/login_details.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 class HomeController extends GetxController {
   bool hidePassword = true;
+  final pdf = pw.Document();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   FocusNode emailNode = FocusNode();
@@ -28,6 +21,7 @@ class HomeController extends GetxController {
   TextEditingController companyNameController = TextEditingController();
   TextEditingController phoneEmailController = TextEditingController();
   TextEditingController nameOfSupervisorController = TextEditingController();
+  TextEditingController descriptionOfWorkController = TextEditingController();
 
   FocusNode certificateIdFocusNode = FocusNode();
   FocusNode locationDetailsFocusNode = FocusNode();
@@ -37,6 +31,7 @@ class HomeController extends GetxController {
   FocusNode companyNameFocusNode = FocusNode();
   FocusNode phoneEmailFocusNode = FocusNode();
   FocusNode nameOfSupervisorFocusNode = FocusNode();
+  FocusNode descriptionOfWorkFocusNode = FocusNode();
 
   Map<String, bool> typeOfWork = {
     'addition': false,
@@ -44,8 +39,33 @@ class HomeController extends GetxController {
     'newWork': false
   };
 
-  String prescribedWork = "";
-  String referenceStandards = "";
+  Map<String, bool> prescribedWork = {
+    'lowRisk': false,
+    'general': false,
+    'highRisk': false
+  };
+  TextEditingController prescribedWorkSpecifyController =
+      TextEditingController();
+  FocusNode prescribedWorkSpecifyFocusNode = FocusNode();
+
+  Map<String, bool> referenceStandards = {
+    'part1': false,
+    'part2': false,
+  };
+  TextEditingController referenceStandardsController = TextEditingController();
+  FocusNode referenceStandardsFocusNode = FocusNode();
+
+  Map<String, bool> selectApply = {
+    'installedWithSpecifiedCertifiedDesign': false,
+    'earthingSystemIsCorrectlyRated': false,
+    'containsFittings': false,
+    'reliesOnSupplierDeclaration': false,
+    'reliesOnManufacturerInstructions': false,
+    'satisfactorilyTested': false,
+    'safeToConnect': false,
+  };
+  TextEditingController electronicReferenceController = TextEditingController();
+  FocusNode electronicReferenceFocusNode = FocusNode();
 
   Future<bool> initvalidation() async {
     if (!Global.checkNull(emailController.text.toString().trim())) {
@@ -88,6 +108,21 @@ class HomeController extends GetxController {
     // }
     return true;
   }
+
+  // Future<void> createPDF() async {
+  //   final pdf = pw.Document();
+
+  //   pdf.addPage(
+  //     pw.Page(
+  //       build: (pw.Context context) => pw.Center(
+  //         child: pw.Text('Hello World!'),
+  //       ),
+  //     ),
+  //   );
+
+  //   // final file = File('example.pdf');
+  //   // await file.writeAsBytes(await pdf.save());
+  // }
 
   Future<void> submitForm() async {
     if (await (initvalidation())) {

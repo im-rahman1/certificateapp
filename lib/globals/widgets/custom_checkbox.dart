@@ -1,3 +1,5 @@
+import 'package:certificateapp/utils/app_colors.dart';
+import 'package:certificateapp/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomCheckBox extends StatelessWidget {
@@ -14,12 +16,20 @@ class CustomCheckBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Checkbox(value: value, onChanged: onChange),
-        GestureDetector(
-            onTap: () {
-              onChange(!value);
-            },
-            child: Text(label))
+        Checkbox(
+            value: value,
+            onChanged: onChange,
+            activeColor: AppColors.primaryColor),
+        Expanded(
+          child: GestureDetector(
+              onTap: () {
+                onChange(!value);
+              },
+              child: Text(
+                label,
+                // softWrap: true,
+              )),
+        )
       ],
     );
   }

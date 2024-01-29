@@ -98,6 +98,7 @@ Widget customTextFiledMultiLine(
     TextAlign align = TextAlign.start,
     double padding = 10,
     int? maxLength,
+    String label = "",
     TextDirection? textDirection = TextDirection.ltr,
     dynamic validation}) {
   return Container(
@@ -123,17 +124,23 @@ Widget customTextFiledMultiLine(
           hintStyle: normalText().copyWith(color: AppColors.hintText),
           suffixIcon: icon,
           prefixIcon: prefix,
+          labelText: label,
+          labelStyle: TextStyle(
+            color: focusNode.hasFocus
+                ? AppColors.primaryColor
+                : AppColors.borderColor,
+          ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(16),
             borderSide: BorderSide(color: AppColors.colorTextFildBorderColor),
           ),
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: AppColors.primaryColor),
-              borderRadius: BorderRadius.circular(8)),
+              borderRadius: BorderRadius.circular(16)),
           // contentPadding: EdgeInsets.symmetric(horizontal: padding),
           border: OutlineInputBorder(
               borderSide: BorderSide(color: AppColors.colorTextFildBorderColor),
-              borderRadius: BorderRadius.circular(8))),
+              borderRadius: BorderRadius.circular(16))),
     ),
   );
 }
